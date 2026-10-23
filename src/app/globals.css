@@ -1,0 +1,296 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ── فونت فارسی وزیرمتن — محلی، بدون CDN ── */
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-Variable.woff2") format("woff2-variations"),
+    url("/fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── توکن‌های هویت دوخت‌یار (برگرفته از رابط واقعی برنامه) ── */
+@theme {
+  --color-ink-950: #0b0b0d;
+  --color-ink-900: #101012;
+  --color-ink-850: #141416;
+  --color-ink-800: #1b1b1f;
+  --color-ink-700: #232329;
+  --color-ink-600: #2c2c33;
+
+  --color-gold: #d6b46a;
+  --color-gold-light: #f0d99b;
+  --color-gold-dark: #8e713a;
+
+  --color-bone: #f5f2eb;
+  --color-bone-muted: #a7a4a0;
+  --color-bone-faint: #6e6b67;
+
+  --color-ok: #4caf83;
+  --color-danger: #e56b6f;
+  --color-warn: #e7a75e;
+  --color-info: #6a93c8;
+
+  --font-sans: "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+
+  --radius-xl2: 14px;
+
+  --shadow-panel: 0 1px 0 0 rgba(255, 255, 255, 0.03) inset,
+    0 18px 40px -24px rgba(0, 0, 0, 0.9);
+  --shadow-lift: 0 24px 60px -30px rgba(0, 0, 0, 0.95);
+
+  --ease-silk: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --animate-float-slow: float-slow 7s ease-in-out infinite;
+  --animate-float-slower: float-slow 9s ease-in-out 1.2s infinite;
+  --animate-stitch-dash: stitch-dash 3.2s linear infinite;
+  --animate-needle-run: needle-run 6s ease-in-out infinite;
+
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-9px);
+    }
+  }
+  @keyframes stitch-dash {
+    to {
+      stroke-dashoffset: -28;
+    }
+  }
+  @keyframes needle-run {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate(6px, 4px) rotate(2deg);
+    }
+  }
+}
+
+/* ── متغیرهای shadcn هماهنگ با تم مشکی‌طلایی ── */
+:root {
+  --radius: 0.75rem;
+  --background: #0b0b0d;
+  --foreground: #f5f2eb;
+  --card: #141416;
+  --card-foreground: #f5f2eb;
+  --popover: #141416;
+  --popover-foreground: #f5f2eb;
+  --primary: #d6b46a;
+  --primary-foreground: #101012;
+  --secondary: #1b1b1f;
+  --secondary-foreground: #f5f2eb;
+  --muted: #1b1b1f;
+  --muted-foreground: #a7a4a0;
+  --accent: #1b1b1f;
+  --accent-foreground: #f0d99b;
+  --destructive: #e56b6f;
+  --border: rgba(255, 255, 255, 0.07);
+  --input: #232329;
+  --ring: rgba(214, 180, 106, 0.55);
+  --chart-1: #d6b46a;
+  --chart-2: #4caf83;
+  --chart-3: #6a93c8;
+  --chart-4: #e7a75e;
+  --chart-5: #e56b6f;
+  --sidebar: #101012;
+  --sidebar-foreground: #f5f2eb;
+  --sidebar-primary: #d6b46a;
+  --sidebar-primary-foreground: #101012;
+  --sidebar-accent: #1b1b1f;
+  --sidebar-accent-foreground: #f5f2eb;
+  --sidebar-border: rgba(255, 255, 255, 0.07);
+  --sidebar-ring: rgba(214, 180, 106, 0.55);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    scroll-padding-top: 84px;
+  }
+
+  body {
+    @apply bg-ink-950 text-bone antialiased;
+    font-feature-settings: "ss01" on, "ss02" on;
+    background-image: radial-gradient(
+      ellipse 85% 55% at 50% -12%,
+      rgba(214, 180, 106, 0.05),
+      transparent 62%
+    );
+    background-attachment: fixed;
+    min-height: 100dvh;
+    overflow-x: clip;
+  }
+
+  /* اعداد همیشه با ارقام یکنواخت */
+  .num {
+    font-variant-numeric: tabular-nums;
+    unicode-bidi: plaintext;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(214, 180, 106, 0.65);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: rgba(214, 180, 106, 0.28);
+    color: var(--bone);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0e0e10;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a30;
+    border-radius: 8px;
+    border: 2px solid #0e0e10;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a42;
+  }
+}
+
+@layer components {
+  /* سطح کارت استاندارد — هماهنگ با رابط برنامه */
+  .surface {
+    @apply rounded-xl2 border border-white/[0.06] bg-ink-850 shadow-panel;
+  }
+  .surface-sunken {
+    @apply rounded-xl2 border border-white/[0.04] bg-ink-900;
+  }
+
+  /* خط طلایی موی‌باریک برای جداکننده‌های هویتی */
+  .hairline-gold {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(214, 180, 106, 0.35),
+      rgba(214, 180, 106, 0.08),
+      transparent
+    );
+  }
+
+  /* خط دوخت — نقطه‌چین طلایی ظریف مثل کوک چرخ */
+  .stitch-line {
+    height: 0;
+    border-top: 1.5px dashed rgba(214, 180, 106, 0.32);
+  }
+
+  /* بافت کاغذ الگو — شبکه‌بندی ظریف پس‌زمینه هیرو */
+  .pattern-paper {
+    background-image: linear-gradient(rgba(245, 242, 235, 0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245, 242, 235, 0.028) 1px, transparent 1px),
+      linear-gradient(rgba(245, 242, 235, 0.014) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245, 242, 235, 0.014) 1px, transparent 1px);
+    background-size: 88px 88px, 88px 88px, 22px 22px, 22px 22px;
+  }
+
+  /* نشانگر تایپ هیرو — چشمک‌زن مثل مکان‌نمای صفحه‌کلید */
+  .type-cursor {
+    display: inline-block;
+    width: 0.05em;
+    min-width: 2.5px;
+    height: 0.78em;
+    margin-inline-start: 0.07em;
+    border-radius: 1px;
+    background: currentColor;
+    vertical-align: -0.04em;
+    animation: caret-blink 1.05s steps(1, end) infinite;
+  }
+  @keyframes caret-blink {
+    0%,
+    58% {
+      opacity: 1;
+    }
+    59%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* دکمه طلایی اصلی */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 text-[15px] font-semibold text-ink-950 transition-all duration-200;
+    box-shadow: 0 10px 30px -12px rgba(214, 180, 106, 0.45);
+  }
+  .btn-gold:hover {
+    background: var(--color-gold-light);
+    box-shadow: 0 14px 36px -12px rgba(214, 180, 106, 0.55);
+    transform: translateY(-1px);
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 text-[15px] font-medium text-bone transition-all duration-200 hover:border-gold/40 hover:bg-gold/[0.06];
+  }
+}
+
+/* حرکت کمتر برای کاربرانی که ترجیح می‌دهند */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

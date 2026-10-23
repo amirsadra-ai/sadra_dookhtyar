@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0B0B0D"/>
+  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#D6B46A" stroke-opacity="0.35" stroke-width="1.5"/>
+  <!-- سوزن -->
+  <line x1="50" y1="14" x2="24" y2="40" stroke="#D6B46A" stroke-width="3.4" stroke-linecap="round"/>
+  <circle cx="50.5" cy="13.5" r="3" fill="none" stroke="#D6B46A" stroke-width="2"/>
+  <!-- نخ -->
+  <path d="M24 40 C 32 34, 36 30, 42 28 C 47 26.5, 49 30, 46 33 C 43 36, 38 35, 37 31.5" fill="none" stroke="#F0D99B" stroke-width="2" stroke-linecap="round" stroke-dasharray="3.5 3"/>
+  <!-- کوک -->
+  <path d="M14 50 H 50" stroke="#D6B46A" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 4"/>
+</svg>
